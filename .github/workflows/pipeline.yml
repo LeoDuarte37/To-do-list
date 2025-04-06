@@ -12,16 +12,15 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Set up JDK
+      - name: Configurando JDK
         uses: actions/setup-java@v3
         with:
           java-version: '21'
           distribution: 'oracle'
 
-      - name: Build e Testes com Maven
+      - name: Rodar testes unitários
         run: 'mvn clean verify'
         working-directory: tasks
 
-      - name: Docker Build (se os testes passarem)
-        run: docker build -t tasks-app .
-        working-directory: tasks
+      - name: Subir containers
+        run: docker-compose up --build -d

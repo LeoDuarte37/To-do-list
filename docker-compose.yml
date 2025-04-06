@@ -1,0 +1,41 @@
+services:
+  mysql:
+    image: mysql:8.2
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-net
+
+  tomcat:
+    image: tomcat:10-jdk21
+    container_name: tomcat
+    build: ./tasks
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./tasks/target/tasks.war:/usr/local/tomcat/webapps/tasks.war
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+    networks:
+      - app-net
+
+volumes:
+  mysql_data:
+
+networks:
+  app-net:
+    driver: bridge
