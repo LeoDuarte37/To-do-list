@@ -5,8 +5,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
+      # MYSQL_USER: ${DB_USER}
+      # MYSQL_PASSWORD: ${DB_PASS}
     ports:
       - "${DB_PORT}:3306"
     volumes:
@@ -22,8 +22,6 @@ services:
       - mysql
     ports:
       - "8080:8080"
-    volumes:
-      - ./tasks/target/tasks.war:/usr/local/tomcat/webapps/tasks.war
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
