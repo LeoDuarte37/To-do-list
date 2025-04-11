@@ -4,28 +4,13 @@
     <Appenders>
         <!-- Console -->
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{dd-MM-yyyy ss:mm:HH} [%t] %-5level %c{1} - %msg%n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n" />
         </Console>
-
-        <!-- Arquivo para logs -->
-        <File name="App" fileName="logs/app.log">
-            <PatternLayout pattern="%d{dd-MM-yyyy ss:mm:HH} [%t] %-5level %c{1} - %msg%n" />
-        </File>
-
-        <!-- Arquivo para logs de debug -->
-        <File name="Debug" fileName="logs/debug.log">
-            <PatternLayout pattern="%d{dd-MM-yyyy ss:mm:HH} [%t] %-5level %c{1} - %msg%n" />
-        </File>
     </Appenders>
     <Loggers>
-        <Logger name="com.leoduarte" level="debug" additivity="false">
-            <AppenderRef ref="Debug" />
-        </Logger>
-
         <!-- Root Logger -->
         <Root level="info">
-            <AppenderRef ref="Console" level="warn" />
-            <AppenderRef ref="App" />
+            <AppenderRef ref="Console" />
         </Root>
     </Loggers>
 </Configuration>
