@@ -1,8 +1,13 @@
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.leoduarte.dto.TaskResponseDTO" %>
+
 <html>
     <head>
         <title>Home</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        <% response.sendRedirect(request.getContextPath() + "/task"); %>
     </body>
 </html>

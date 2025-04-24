@@ -7,52 +7,58 @@ public class Task {
     private String description;
     private boolean done;
 
-    private void setId(Integer id) {
-        this.id = id;
+    private Task(Builder builder) {
+        this.id = builder.id;
+        this.title = builder.title;
+        this.description = builder.description;
+        this.done = builder.done;
     }
 
-    private void setTitle(String title) {
-        this.title = title;
+    public Integer getId() {
+        return id;
     }
 
-    private void setDescription(String description) {
-        this.description = description;
+    public String getTitle() {
+        return title;
     }
 
-    private void setDone(boolean done) {
-        this.done = done;
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isDone() {
+        return done;
     }
 
     public static class Builder {
 
-        private Task task;
-
-        public Builder() {
-            task = new Task();
-        }
+        private Integer id;
+        private String title;
+        private String description;
+        private boolean done;
 
         public Builder id(Integer id) {
-            task.setId(id);
+            this.id = id;
             return this;
         }
 
         public Builder title(String title) {
-            task.setTitle(title);
+            this.title = title;
             return this;
         }
 
         public Builder description(String description) {
-            task.setDescription(description);
+            this.description = description;
             return this;
         }
 
         public Builder done(boolean done) {
-            task.setDone(done);
+            this.done = done;
             return this;
         }
 
         public Task build() {
-            return task;
+            return new Task(this);
         }
     }
 }

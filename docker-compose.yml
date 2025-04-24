@@ -3,14 +3,15 @@ services:
     image: mysql:8.2
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
       MYSQL_DATABASE: ${DB_NAME}
-      # MYSQL_USER: ${DB_USER}
-      # MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
     ports:
       - "${DB_PORT}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - app-net
 
@@ -29,7 +30,13 @@ services:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
       DB_URL: ${DB_URL}
+      DB_POOL_SIZE: ${DB_POOL_SIZE}
+      DB_MINIMUM_IDLE: ${DB_MINIMUM_IDLE}
+      DB_IDLE_TIMEOUT: ${DB_IDLE_TIMEOUT}
+      DB_CONNECTION_TIMEOUT: ${DB_CONNECTION_TIMEOUT}  
       TZ: America/Sao_Paulo
+    volumes:
+      - ./tasks/target/todolist.war:/usr/local/tomcat/webapps/todolist.war
     networks:
       - app-net
 
