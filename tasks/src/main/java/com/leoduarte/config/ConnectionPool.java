@@ -18,6 +18,7 @@ public final class ConnectionPool {
 
     private ConnectionPool() {
         HikariConfig config = new HikariConfig();
+
         config.setJdbcUrl(System.getenv("DB_URL"));
         config.setUsername(System.getenv("DB_USER"));
         config.setPassword(System.getenv("DB_PASS"));
