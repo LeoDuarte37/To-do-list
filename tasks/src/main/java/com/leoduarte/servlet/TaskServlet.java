@@ -109,11 +109,18 @@ public class TaskServlet extends HttpServlet {
     }
 
     private void handleDone(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer id = Integer.parseInt(req.getParameter("id"));
-        boolean done = Boolean.parseBoolean(req.getParameter("done"));
-        taskService.done(id, done);
+        String idParam = req.getParameter("id");
+        String doneParam = req.getParameter("done");
 
-        handleGetAll(req, resp);
+        if (idParam != null & doneParam != null) {
+            Integer id = Integer.parseInt(idParam);
+            boolean done = Boolean.parseBoolean(doneParam);
+            taskService.done(id, done);
+
+            resp.setStatus(204);
+        } else {
+            resp.sendError(400, "Invalid parameters!");
+        }
     }
 
     private void handleUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

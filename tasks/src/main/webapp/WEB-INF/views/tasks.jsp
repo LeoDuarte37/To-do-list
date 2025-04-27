@@ -7,6 +7,7 @@
     <head>
         <title>Tasks</title>
         <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/script.js"></script>
     </head>
     <body>
         <%@ include file="../includes/header.jsp" %>
@@ -21,7 +22,13 @@
                     <c:forEach var="task" items="${tasks}">
                         <li>
                             <div id="content">
-                                <input type="checkbox" <c:if test="${task.done}">checked</c:if> />
+                                <input
+                                    type="checkbox"
+                                    onclick="toggleDone(${task.id}, ${task.done})"
+                                    <c:if test="${task.done}">
+                                        checked
+                                    </c:if>
+                                />
                                 <span>${task.title}</span>
                             </div>
                             <div>
