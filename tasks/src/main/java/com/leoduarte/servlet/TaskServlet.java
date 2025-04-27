@@ -74,7 +74,7 @@ public class TaskServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
-        if (path.matches("^/task/\\d+$")) {
+        if (path.equals("/task")) {
             handleDelete(req, resp);
         } else {
             badRequest(resp, path);
@@ -137,10 +137,15 @@ public class TaskServlet extends HttpServlet {
     }
 
     private void handleDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer id = Integer.parseInt(req.getParameter("id"));
-        taskService.delete(id);
+        String idParam = req.getParameter("id");
 
-        handleGetAll(req, resp);
+        if (idParam != null) {
+            Integer id = Integer.parseInt(idParam);
+            taskService.delete(id);
+            resp.setStatus(204);
+        } else {
+            resp.sendError(400, "Invalid parameters!");
+        }
     }
 
     private void badRequest(HttpServletResponse resp, String path) throws IOException {

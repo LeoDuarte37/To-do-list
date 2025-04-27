@@ -15,7 +15,7 @@
         <div id="container">
             <h1>To Do List</h1>
 
-            <%@ include file="formNewTask.jsp" %>
+            <%@ include file="../includes/formNewTask.jsp" %>
 
             <c:if test="${not empty tasks}">
                 <ul>
@@ -31,7 +31,7 @@
                                 />
                                 <span>${task.title}</span>
                             </div>
-                            <div>
+                            <div onclick="deleteTask(${task.id})">
                                 X
                             </div>
                         </li>
