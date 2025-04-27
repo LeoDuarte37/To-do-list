@@ -9,7 +9,7 @@ function verifyResponse(ok) {
     }
 }
 
-async function toggleDone(id, done) {
+async function check(id, done) {
 
     const response = await fetch(
         url.concat("?id=", id, "&done=", !done),

@@ -24,7 +24,7 @@
                             <div id="content">
                                 <input
                                     type="checkbox"
-                                    onclick="toggleDone(${task.id}, ${task.done})"
+                                    onclick="check(${task.id}, ${task.done})"
                                     <c:if test="${task.done}">
                                         checked
                                     </c:if>
