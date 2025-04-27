@@ -31,9 +31,9 @@
                                 />
                                 <span>${task.title}</span>
                             </div>
-                            <div onclick="deleteTask(${task.id})">
+                            <span id="delete" onclick="deleteTask(${task.id})">
                                 X
-                            </div>
+                            </span>
                         </li>
                     </c:forEach>
                 </ul>
