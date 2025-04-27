@@ -39,7 +39,7 @@ public class TaskServlet extends HttpServlet {
         if (path.equals("/task")) {
             handleSave(req, resp);
         } else {
-            badRequest(resp, path);
+            badRequest(resp, "Invalid path: " + path);
         }
     }
 
@@ -49,11 +49,11 @@ public class TaskServlet extends HttpServlet {
 
         if (path.equals("/task")) {
             handleGetAll(req, resp);
-        } else if (path.matches("^/task/\\d+$")) {
+        } else if (path.matches("^/task/\\d+$")) {                      // Não está funcionando
             Integer id = Integer.parseInt(path.substring("/task/".length()));
             handleGetById(req, resp, id);
         } else {
-            badRequest(resp, path);
+            badRequest(resp, "Invalid path: " + path);
         }
     }
 
@@ -66,7 +66,7 @@ public class TaskServlet extends HttpServlet {
         } else if (path.equals("/task/update")) {
             handleUpdate(req, resp);
         } else {
-            badRequest(resp, path);
+            badRequest(resp, "Invalid path: " + path);
         }
     }
 
@@ -77,7 +77,7 @@ public class TaskServlet extends HttpServlet {
         if (path.equals("/task")) {
             handleDelete(req, resp);
         } else {
-            badRequest(resp, path);
+            badRequest(resp, "Invalid path: " + path);
         }
     }
 
@@ -119,7 +119,7 @@ public class TaskServlet extends HttpServlet {
 
             resp.setStatus(204);
         } else {
-            resp.sendError(400, "Invalid parameters!");
+            badRequest(resp, "Invalid parameters!");
         }
     }
 
@@ -144,12 +144,12 @@ public class TaskServlet extends HttpServlet {
             taskService.delete(id);
             resp.setStatus(204);
         } else {
-            resp.sendError(400, "Invalid parameters!");
+            badRequest(resp, "Invalid parameters!");
         }
     }
 
-    private void badRequest(HttpServletResponse resp, String path) throws IOException {
-        log.warn("Bad Request. Invalid Path: {}", path);
-        resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid Action");
+    private void badRequest(HttpServletResponse resp, String mensage) throws IOException {
+        log.warn(mensage);
+        resp.sendError(HttpServletResponse.SC_BAD_REQUEST, mensage);
     }
 }
