@@ -4,7 +4,7 @@
 
 ## Descrição
 
-Uma lista de tarefas com possibilidade de adição, remoção e edição de atividades.
+Uma lista de tarefas com possibilidade de adição, remoção e conclusão de atividades.
 
 Desenvolvi esse projeto (pequeno e genérico) apenas com o objetivo de praticar
 o que estudei sobre: Docker, GitHub Actions, GitFlow, Servlets, Tomcat, JSP/JSTL,
