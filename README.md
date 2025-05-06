@@ -71,6 +71,8 @@ To-do-list/
     ├── schema.sql                              # Modelo lógico do banco de dados
 ```
 
+<br>
+
 ## Como Usar
 
 ***Nota Importante:*** É necessário ter o **docker instalado**. 
@@ -110,11 +112,9 @@ To-do-list/
     localhost:8080/todolist/ 
     ```
 
+<br>
 
-
-## Como Contribuir
-
-Contribuições são muito bem-vindas! 💡
+## Como Contribuir 💡 
 
 ### Git Flow
 
@@ -123,8 +123,6 @@ Contribuições são muito bem-vindas! 💡
 - `feature/*`: desenvolvimento de novas funcionalidades.
 - `release/*`: preparação para uma nova versão estável.
 - `hotfix/*`: correções urgentes na produção.
-
-<br>
 
 ### Padrão de Commits
 
@@ -145,8 +143,6 @@ Siga o padrão abaixo ao fazer commits:
 - chore: tarefas sem impacto no código de produção (ex: configs, builds)
 - build: alterações relacionadas à build (Docker, Maven, Gradle, etc)
 - ci: alterações em arquivos de CI/CD (GitHub Actions, Jenkins, etc)
-
-<br>
 
 ### Siga estas etapas
 
