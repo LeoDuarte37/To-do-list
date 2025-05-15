@@ -10,6 +10,6 @@ RUN mvn clean package -DskipTests
 # Etapa 2: rodar no tomcat
 FROM tomcat:11.0.6-jdk21
 
-COPY --from=build /app/target/todolist.war /usr/local/tomcat/webapps/
+COPY --from=build /app/target/todolist.war /usr/local/tomcat/webapps/todolist.war
 
 EXPOSE 8080
