@@ -35,8 +35,6 @@ services:
       DB_IDLE_TIMEOUT: ${DB_IDLE_TIMEOUT}
       DB_CONNECTION_TIMEOUT: ${DB_CONNECTION_TIMEOUT}  
       TZ: America/Sao_Paulo
-    volumes:
-      - ./tasks/target/todolist.war:/usr/local/tomcat/webapps/todolist.war
     networks:
       - app-net
 
